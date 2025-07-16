@@ -41,11 +41,76 @@ public class recursion2 {
         return Nth;
 
     }
+    // check if a arra is sorted or not ...................................
+
+    public static boolean checkArr(int arr[], int num) {
+
+        if (num == arr.length - 1) {
+
+            return true;
+
+        }
+
+        if (arr[num] < arr[num + 1]) {
+            return checkArr(arr, num + 1);
+        } else {
+            return false;
+        }
+
+    }
+
+    // First occorance of a number in an
+    // array........................................
+
+    public static int firstOccur(int arr[], int i, int key) {
+        if (i == arr.length) {
+            return -1;
+        }
+
+        if (arr[i] != key) {
+            return firstOccur(arr, i + 1, key);
+        } else {
+            return i;
+        }
+
+    }
+
+    // Last Occurance of a number in an array
+    // ............................................
+
+    public static int lastOccur(int arr[], int key, int i) {
+        if (i == 0) {
+            return -1;
+        }
+
+        if (arr[i] != key) {
+            return lastOccur(arr, key, i - 1);
+        } else {
+            return i;
+        }
+    }
+
+    public static int powerOfX(int x, int p) {
+
+        if (p == 1) {
+            return x;
+        }
+
+        int xnm1 = powerOfX(x, p - 1);
+        int Xn = x * xnm1;
+        return Xn;
+
+    }
 
     public static void main(String[] args) {
-        printNum(10);
-        System.out.println(Factorial(5));
-        System.out.println(sumOfNums(2));
-        System.out.println(fibonachi(4));
+        // printNum(10);
+        // System.out.println(Factorial(5));
+        // System.out.println(sumOfNums(2));
+        // System.out.println(fibonachi(4));
+        int arr[] = { 1, 2, 3, 2, 6, 6, 7, 8, 7 };
+        int i = arr.length - 1;
+        // System.out.println(firstOccur(arr, 0, 3));
+        System.out.println(lastOccur(arr, 6, i));
+        System.out.println(powerOfX(2, 10));
     }
 }
