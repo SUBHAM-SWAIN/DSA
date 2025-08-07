@@ -153,6 +153,18 @@ public class recursion2 {
 
     }
 
+    // friens pairing problem
+    public static int friendPairing(int n) {
+        // base case
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // work
+        int single = friendPairing(n - 1);
+        int pair = friendPairing(n - 2) * (n - 1);
+        return single + pair;
+    }
+
     public static void main(String[] args) {
         // printNum(10);
         // System.out.println(Factorial(5));
@@ -166,5 +178,6 @@ public class recursion2 {
         // System.out.println(powerOfXOptimised(2, 10));
         // System.out.println(tilingProblem(4));
         removeDuplicate("aappnnaa", 0, new boolean[26], new StringBuilder(""));
+        System.out.println(friendPairing(3));
     }
 }
