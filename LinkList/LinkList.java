@@ -68,6 +68,60 @@ public class LinkList {
 
     }
 
+    public int removeFirst() {
+        if (size == 0) {
+            System.out.println("Link List is empty");
+            return -1;
+        }
+        int val = Head.data;
+
+        if (size == 1) {
+            Head = Tail = null;
+            size--;
+            return val;
+        }
+
+        Head = Head.next;
+        size--;
+        return val;
+    }
+
+    public int removeLast() {
+        if (size == 0) {
+            System.out.println("LinkList is empty");
+            return -1;
+        }
+        if (size == 1) {
+            Head = Tail = null;
+            return 0;
+        }
+        Node temp = Head;
+
+        for (int i = 0; i < size - 2; i++) {
+            temp = temp.next;
+
+        }
+
+        int val = temp.next.data;
+        temp.next = null;
+        Tail = temp;
+        return val;
+
+    }
+
+    public int linearSearch(int key) {
+        Node temp = Head;
+        int i = 0;
+        while (temp != null) {
+            if (temp.data == key) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
 
         LinkList ll = new LinkList();
@@ -82,6 +136,12 @@ public class LinkList {
 
         ll.print();
         System.out.println(size);
+        System.out.println(ll.removeFirst());
+        ll.print();
+        System.out.println(ll.removeLast());
+        ll.print();
+        System.out.println(ll.linearSearch(3));
+        System.out.println(ll.linearSearch(10));
     }
 
 }
