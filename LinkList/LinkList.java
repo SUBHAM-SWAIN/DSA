@@ -122,6 +122,44 @@ public class LinkList {
         return -1;
     }
 
+    public void revers() {
+        Node cur = Tail = Head;
+        Node prev = null;
+        Node next;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        Head = prev;
+    }
+
+    public void removeNthNode(int n) {
+        int sz = 0;
+        Node temp = Head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        if (n == sz) {
+            Head = Head.next;
+            return;
+        }
+
+        int i = 1;
+        Node prev = Head;
+        int j = sz - n;
+        System.out.println(sz + " " + j);
+        while (i < j) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+
+    }
+
     public static void main(String[] args) {
 
         LinkList ll = new LinkList();
@@ -142,6 +180,10 @@ public class LinkList {
         ll.print();
         System.out.println(ll.linearSearch(3));
         System.out.println(ll.linearSearch(10));
+        ll.revers();
+        ll.print();
+        ll.removeNthNode(2);
+        ll.print();
     }
 
 }
