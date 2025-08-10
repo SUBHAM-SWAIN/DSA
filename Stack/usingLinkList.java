@@ -1,7 +1,7 @@
 package Stack;
 
 //Stack using linklist
-public class stack2 {
+public class usingLinkList {
 
     static class Node {
         int data;

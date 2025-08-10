@@ -3,7 +3,7 @@ package Stack;
 //Stack implementation using array list
 import java.util.ArrayList;
 
-public class stack1 {
+public class usingArrayList {
     static class Stack {
         static ArrayList<Integer> al = new ArrayList<>();
 
