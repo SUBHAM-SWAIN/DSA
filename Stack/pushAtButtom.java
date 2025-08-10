@@ -3,7 +3,7 @@ package Stack;
 import java.util.*;
 
 //push at bottom
-public class stack4 {
+public class pushAtButtom {
     public static void pushButtom(Stack<Integer> s, int data) {
         if (s.isEmpty()) {
             s.push(data);
