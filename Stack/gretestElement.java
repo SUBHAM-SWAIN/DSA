@@ -22,7 +22,7 @@ public class gretestElement {
         }
 
         for (int i = 0; i < nextGreater.length; i++) {
-            System.out.println("Next greater element of " + arr[i] + " is: " + nextGreater[i]);
+            System.out.println(arr[i] + " -> " + nextGreater[i]);
         }
 
     }
