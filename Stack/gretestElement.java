@@ -4,7 +4,7 @@ import java.util.*;
 
 public class gretestElement {
     public static void main(String[] args) {
-        int[] arr = { 2, 6, 3, 1, 8, 2, 5, 7, 4 };
+        int[] arr = { 2, 6, 3, 1, 8, 2, 5, 7 };
         Stack<Integer> s = new Stack<>();
         int nextGreater[] = new int[arr.length];
 
