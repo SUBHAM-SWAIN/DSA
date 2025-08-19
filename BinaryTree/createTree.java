@@ -105,6 +105,22 @@ public class createTree {
 
     }
 
+    public static int countNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftCount = countNodes(root.left);
+        int rightCount = countNodes(root.right);
+        return leftCount + rightCount + 1;
+    }
+
+    public static int sumOfNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        return root.data + sumOfNodes(root.left) + sumOfNodes(root.right);
+    }
+
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -128,6 +144,9 @@ public class createTree {
         root2.right.left = new Node(6);
         root2.right.right = new Node(7);
         System.out.println(height(root2));
+        System.out.println(countNodes(root2));
+
+        System.out.println(sumOfNodes(root2));
 
     }
 }
