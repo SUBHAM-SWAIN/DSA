@@ -94,6 +94,32 @@ public class createTree {
 
     }
 
+    static class Info {
+        int diam;
+        int ht;
+
+        Info(int diam, int ht) {
+            this.diam = diam;
+            this.ht = ht;
+
+        }
+
+    }
+
+    public static Info diameter2(Node root) {
+        if (root == null) {
+            return new Info(0, 0);
+        }
+
+        Info leftInfo = diameter2(root.left);
+        Info rightInfo = diameter2(root.right);
+
+        int finalDiam = Math.max(leftInfo.diam, Math.max(rightInfo.diam, leftInfo.ht + rightInfo.ht + 1));
+        int height = Math.max(leftInfo.ht, rightInfo.ht) + 1;
+        return new Info(finalDiam, height);
+
+    }
+
     public static int height(Node root) {
         if (root == null) {
             return 0;
@@ -119,6 +145,49 @@ public class createTree {
             return 0;
         }
         return root.data + sumOfNodes(root.left) + sumOfNodes(root.right);
+    }
+
+    public static int diameter(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        int leftDiameter = diameter(root.left);
+        int rightDiameter = diameter(root.right);
+        return Math.max(leftHeight + rightHeight + 1, Math.max(leftDiameter, rightDiameter));
+    }
+
+    public static boolean isIdentical(Node node, Node subroot) {
+        if (node == null && subroot == null) {
+            return true;
+        } else if (node == null || subroot == null || node.data != subroot.data) {
+            return false;
+        }
+
+        if (!isIdentical(node.left, subroot.left)) {
+            return false;
+        }
+        if (!isIdentical(node.right, subroot.right)) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public static boolean isSubTree(Node root, Node subroot) {
+
+        if (root == null) {
+            return false;
+        }
+        if (root.data == subroot.data) {
+            if (isIdentical(root, subroot)) {
+                return true;
+            }
+        }
+
+        return isIdentical(root.left, subroot) || isIdentical(root.right, subroot);
     }
 
     public static void main(String[] args) {
@@ -147,6 +216,15 @@ public class createTree {
         System.out.println(countNodes(root2));
 
         System.out.println(sumOfNodes(root2));
+        System.out.println("Diameter of the tree is: " + diameter(root2));
+        Info result = diameter2(root2);
+        System.out.println("Diameter of the tree is: " + result.diam);
+
+        Node subNode = new Node(2);
+        subNode.left = new Node(4);
+        subNode.right = new Node(5);
+
+        System.out.println(isSubTree(root, subNode));
 
     }
 }
