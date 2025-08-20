@@ -223,7 +223,7 @@ public class createTree {
 
             if (curr.node.left != null) {
                 q.add(new Info2(curr.node.left, curr.hd - 1));
-                min = Math.min(min, curr.hd - 1);
+                min = Math.min(min, curr.hd + 1);
             }
 
             if (curr.node.right != null) {
